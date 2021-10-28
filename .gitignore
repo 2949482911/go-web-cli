@@ -1,0 +1,21 @@
+.idea
+.vscode
+*/.DS_Store
+static/uploadfile
+main.exe
+temp/
+!temp
+vendor
+temp/logs
+config/settings.dev.yml.log
+config/settings.b.dev.yml
+cmd/migrate/migration/version-local/*
+!cmd/migrate/migration/version-local/doc.go
+.github
+# go sum
+go.sum
+config/settings.deva.yml
+/pkg
+pkg
+/test
+/temp
