@@ -1,8 +1,8 @@
 package router
 
 import (
+	"github.com/go-web-cli/config"
 	"github.com/kataras/iris/v12"
-	"go-web-cli/config"
 )
 
 // AddRouter 初始化的router

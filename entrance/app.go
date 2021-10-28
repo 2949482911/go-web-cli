@@ -1,8 +1,8 @@
 package entrance
 
 import (
-	"go-web-cli/config"
-	"go-web-cli/router"
+	"github.com/go-web-cli/config"
+	"github.com/go-web-cli/router"
 )
 
 var (
