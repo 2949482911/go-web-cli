@@ -1,4 +1,4 @@
-module github.com/go-web-cli
+module go-web-cli
 
 go 1.17
 
