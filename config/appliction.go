@@ -27,13 +27,14 @@ func GetEngine() *App {
 	return &App{
 		Engine: iris.New(),
 		Router: make([]func(iris.Party), 0),
+		Log:    logrus.New(),
 	}
 }
 
 // StartEngine start the web engine
 func StartEngine() {
 	if Runtime.Application.GetHost() == "" {
-		Runtime.Application = GetDefaultConfig()
+		Runtime.Application = getDefaultConfig()
 	}
 	_ = Runtime.Engine.Run(iris.Addr(Runtime.Application.GetHost()))
 	return

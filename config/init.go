@@ -7,7 +7,7 @@ import (
 
 func InitRuntime() {
 	// init logger
-	initLogger(logrus.New())
+	initLogger(Runtime.Log)
 }
 
 func initLogger(logger *logrus.Logger) {
