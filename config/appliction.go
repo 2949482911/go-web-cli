@@ -2,6 +2,8 @@ package config
 
 import (
 	"github.com/kataras/iris/v12"
+	"github.com/panjf2000/ants/v2"
+	"github.com/robfig/cron/v3"
 	"github.com/sirupsen/logrus"
 )
 
@@ -20,6 +22,8 @@ type App struct {
 	Router      []func(iris.Party) // router list
 	Application *Application       // application
 	Log         *logrus.Logger     // logger
+	Pool        *ants.Pool         // pool
+	Cron        *cron.Cron         // Cron
 }
 
 // GetEngine 获取引擎一个默认引擎

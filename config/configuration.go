@@ -13,7 +13,12 @@ type Application struct {
 	Port        int         `json:"port" yaml:"port"`
 	ContextPath string      `json:"context_path" yaml:"context-path"`
 	Logger      Logger      `json:"logger" yaml:"logger"`
+	Pool        Pool        `json:"pool" yaml:"pool"`
 	Expand      interface{} `json:"expand" yaml:"expand"` // 扩展配置
+}
+
+type Pool struct {
+	Size int `json:"size" yaml:"size"`
 }
 
 type Logger struct {
@@ -29,6 +34,7 @@ func getDefaultConfig() *Application {
 		Port:        8080,
 		ContextPath: "/",
 		Logger:      Logger{Level: "debug", OutDir: "./log", Format: "json"},
+		Pool:        Pool{Size: 100000},
 	}
 }
 

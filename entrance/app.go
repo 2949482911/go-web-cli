@@ -16,6 +16,11 @@ func init() {
 }
 
 func StartApp() {
+
+	if configPath == "" {
+		print("configPath is empty ")
+		return
+	}
 	//  1.读取配置文件
 	config.ReadApplicationConfigurationFile(configPath)
 	//  3.加载路由

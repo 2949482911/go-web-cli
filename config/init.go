@@ -1,6 +1,8 @@
 package config
 
 import (
+	"github.com/panjf2000/ants/v2"
+	"github.com/robfig/cron/v3"
 	"github.com/sirupsen/logrus"
 	"os"
 )
@@ -8,8 +10,31 @@ import (
 func InitRuntime() {
 	// init logger
 	initLogger(Runtime.Log)
+
+	// init pool
+	initPool()
+
+	// init Cron
+	initCron()
 }
 
+// initCron init cron instance
+func initCron() {
+	Runtime.Cron = cron.New(cron.WithParser(cron.NewParser(
+		cron.SecondOptional | cron.Minute | cron.Hour | cron.Dom | cron.Month | cron.Dow | cron.Descriptor,
+	)))
+}
+
+// initPool init pool instance
+func initPool() {
+	if Runtime.Application.Pool.Size == 0 {
+		Runtime.Pool, _ = ants.NewPool(10000)
+	} else {
+		Runtime.Pool, _ = ants.NewPool(Runtime.Application.Pool.Size)
+	}
+}
+
+// initLogger init logger
 func initLogger(logger *logrus.Logger) {
 	Runtime.Log = logger
 	switch Runtime.Application.Logger.Level {
