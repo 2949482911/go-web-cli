@@ -49,9 +49,10 @@ func ReadApplicationConfigurationFile(configPath string, expand interface{}) {
 		return
 	}
 	if dbs, err := ioutil.ReadFile(configPath); err == nil {
-		Runtime.Application = new(Application)
+		Runtime.Application = &Application{}
 		Runtime.Application.Expand = expand
 		_ = yaml.Unmarshal(dbs, Runtime.Application)
+		expand = Runtime.Application.Expand
 	}
 	InitRuntime()
 }
