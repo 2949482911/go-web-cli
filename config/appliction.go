@@ -46,6 +46,6 @@ func StartEngine() {
 
 func ExternalFunc(fun ...func()) {
 	for _, f := range fun {
-		f()
+		go f()
 	}
 }
