@@ -15,7 +15,7 @@ func init() {
 	flag.Parse()
 }
 
-func StartApp(expand interface{}) {
+func StartApp(expand interface{}, fuc ...func()) {
 
 	if configPath == "" {
 		print("configPath is empty ")
@@ -25,6 +25,8 @@ func StartApp(expand interface{}) {
 	config.ReadApplicationConfigurationFile(configPath, expand)
 	//  3.加载路由
 	router.ExeRouter()
+
+	config.ExternalFunc(fuc...)
 	//  4.启动
 	config.StartEngine()
 }

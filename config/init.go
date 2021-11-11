@@ -16,6 +16,7 @@ func InitRuntime() {
 
 	// init Cron
 	initCron()
+
 }
 
 // initCron init cron instance

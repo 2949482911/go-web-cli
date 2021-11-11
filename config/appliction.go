@@ -43,3 +43,9 @@ func StartEngine() {
 	_ = Runtime.Engine.Run(iris.Addr(Runtime.Application.GetHost()))
 	return
 }
+
+func ExternalFunc(fun ...func()) {
+	for _, f := range fun {
+		f()
+	}
+}
