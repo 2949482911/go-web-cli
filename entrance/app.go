@@ -15,14 +15,14 @@ func init() {
 	flag.Parse()
 }
 
-func StartApp() {
+func StartApp(expand interface{}) {
 
 	if configPath == "" {
 		print("configPath is empty ")
 		return
 	}
 	//  1.读取配置文件
-	config.ReadApplicationConfigurationFile(configPath)
+	config.ReadApplicationConfigurationFile(configPath, expand)
 	//  3.加载路由
 	router.ExeRouter()
 	//  4.启动

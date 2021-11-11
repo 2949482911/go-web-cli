@@ -35,11 +35,12 @@ func getDefaultConfig() *Application {
 		ContextPath: "/",
 		Logger:      Logger{Level: "debug", OutDir: "./log", Format: "json"},
 		Pool:        Pool{Size: 100000},
+		Expand:      nil,
 	}
 }
 
 // ReadApplicationConfigurationFile 读取配置文件
-func ReadApplicationConfigurationFile(configPath string) {
+func ReadApplicationConfigurationFile(configPath string, expand interface{}) {
 	if configPath == "" {
 		//configPath = "./config/application.yml"
 		Runtime.Application = getDefaultConfig()
@@ -49,6 +50,7 @@ func ReadApplicationConfigurationFile(configPath string) {
 	}
 	if dbs, err := ioutil.ReadFile(configPath); err == nil {
 		Runtime.Application = new(Application)
+		Runtime.Application.Expand = expand
 		_ = yaml.Unmarshal(dbs, Runtime.Application)
 	}
 	InitRuntime()
